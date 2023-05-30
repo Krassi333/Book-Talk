@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+
+</head>
+
+<body>
+
+    {{#if errors}}
+    <div class="error-box">
+        {{#each errors}}
+        <p>{{this}}</p>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    <header class="header">
+
+        <div class="header">
+            <nav class="navbar">
+                <a href="/">Home</a>
+                <a href="/book/catalog">Catalog</a>
+                <!--Only for logged user-->
+                {{#if username}}
+                <a href="#">Profile</a>
+                <a href="/book/create">Create Review</a>
+                <a href="/auth/logout">Logout</a>
+                <!--Only for guest-->
+                {{else}}
+                <a href="/auth/login">Login</a>
+                <a href="/auth/register">Register</a>
+                {{/if}}
+            </nav>
+        </div>
+
+    </header>
+    {{{body}}}
+</body>
+
+</html>
