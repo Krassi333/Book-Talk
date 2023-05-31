@@ -56,4 +56,24 @@ router.get('/login', (req, res) => {
     })
 });
 
+router.post('/login', async (req, res) => {
+    try {
+        const token = await login(req.body.email, req.body.password);
+
+        res.cookie('token', token);
+
+        res.redirect('/'); 
+    } catch (err) {
+        const errors = parseError(err);
+
+        res.render('login', {
+            title: "Login Page",
+            errors,
+            body: {
+                email: req.body.email
+            }
+        })
+    }
+});
+
 module.exports = router;
