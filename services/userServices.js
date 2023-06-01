@@ -43,6 +43,17 @@ async function login(email, password) {
     return token;
 }
 
+function createSesion({ _id, username }) {
+    const payload = {
+        _id,
+        username
+    }
+
+    const token = jwt.sign(payload, secret);
+
+    return token;
+}
+
 module.exports = {
     register,
     login,
