@@ -43,6 +43,14 @@ async function login(email, password) {
     return token;
 }
 
+async function logout() {
+
+}
+
+function verifyToken(token) {
+    return jwt.verify(token, secret);
+}
+
 function createSesion({ _id, username }) {
     const payload = {
         _id,
